@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
@@ -8,10 +9,14 @@ public class Calculator {
                         System.out.println();
                         System.out.println("1.Addition \n2.Subtraction \n3.Multiplication \n4.Division \n5.Exit");
                         System.out.print("Choice : ");
-                        int choice = sc.nextInt();
-                        sc.nextLine();
+                        int Choice=0;
+                        try{
+                                Choice = sc.nextInt();
+                        }catch (InputMismatchException e){
+                                System.out.println("Enter in Digit !");
+                        }sc.nextLine();
 
-                        switch (choice){
+                        switch (Choice){
 
                                 case 1 -> addition();
                                 case 2 -> subtraction();
@@ -29,43 +34,59 @@ public class Calculator {
         }
 
         static void addition(){
-                System.out.print("Number 1: ");
-                int num1 = sc.nextInt();
-                System.out.print("Number 2: ");
-                int num2 = sc.nextInt();
-                int result = num1 + num2;
-                System.out.println("Result :"+result );
+                try {
+                        System.out.print("Number 1: ");
+                        int num1 = sc.nextInt();
+                        System.out.print("Number 2: ");
+                        int num2 = sc.nextInt();
+                        int result = num1 + num2;
+                        System.out.println("Result :" + result);
+                }catch (InputMismatchException e){
+                        System.out.println(" Enter in Digits !");
+                }
         }
 
         static void subtraction(){
-                System.out.print("Number 1: ");
-                int num1 = sc.nextInt();
-                System.out.print("Number 2: ");
-                int num2 = sc.nextInt();
-                int result = num1 - num2;
-                System.out.println("Result :"+result);
+                try {
+                        System.out.print("Number 1: ");
+                        int num1 = sc.nextInt();
+                        System.out.print("Number 2: ");
+                        int num2 = sc.nextInt();
+                        int result = num1 - num2;
+                        System.out.println("Result :" + result);
+                }catch (InputMismatchException e){
+                        System.out.println("Enter in Digits !");
+                }
         }
 
         static void multiplication(){
-                System.out.print("Number 1: ");
-                int num1 = sc.nextInt();
-                System.out.print("Number 2: ");
-                int num2 = sc.nextInt();
-                int result = num1 * num2;
-                System.out.println("Result :"+result);
+                try {
+                        System.out.print("Number 1: ");
+                        int num1 = sc.nextInt();
+                        System.out.print("Number 2: ");
+                        int num2 = sc.nextInt();
+                        int result = num1 * num2;
+                        System.out.println("Result :" + result);
+                }catch (InputMismatchException e){
+                        System.out.println("Enter in Digits !");
+                }
         }
 
         static void division(){
-                System.out.print("Number 1: ");
-                int num1 = sc.nextInt();
-                System.out.print("Number 2: ");
-                        int num2 = sc.nextInt();
-                        if (num2 == 0) {
-                                System.out.println(" Error: Division by zero is not allowed !");
+                try {
+                        System.out.print("Number 1: ");
+                        int num1 = sc.nextInt();
+                        System.out.print("Number 2: ");
+
+                        try {
+                                int num2 = sc.nextInt();
+                                double result = (double) num1 / num2;
+                                System.out.println("Result :" + result);
+                        } catch (ArithmeticException e) {
+                                System.out.println("❌ Error: Division by zero is not allowed.");
                         }
-                        else{
-                        double result = (double)num1 / num2;
-                        System.out.println("Result :"+result);
+                }catch (InputMismatchException e){
+                        System.out.println("Enter in Digits !");
                 }
 
         }
